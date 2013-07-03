@@ -207,7 +207,7 @@
 				s=s<10?"0"+s:s;
 				m=m<10?"0"+m:m;
 				
-				var height = $("#hours").clientHeight;
+				var height = Math.min($("#hours").clientHeight,$("#hours").clientWidth/2);
 				var hStr = height - 5 + "px"
 								
 				$("#hours").innerHTML= h+":";
@@ -235,7 +235,7 @@
 				
 				
 				document.body.setAttribute("style","background-color:rgba("+ rgb + ",1)");
-				var height = $("#am").clientHeight;
+				var height = Math.min($("#am").clientHeight,$("#am").clientWidth/2);
 				var hStr = height - 5 + "px"
 				
 				
