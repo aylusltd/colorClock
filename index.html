@@ -86,15 +86,27 @@
 		<div id="am">AM</div><div id="pm">PM</div>
 		<div id="h12" class="filled">12H</div>
 		<div id="h24" class="empty">24H</div>
+		
+		<a href="https://github.com/ceojasonnichols/colorClock"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+		
 		<script>
 		
 			//Globals
 			var mil = false;
 			
-			/*Home Brew jQuery Lite*/
+			/*Home Brew jQuery Lite
+			 Do not include any of this if jQuery available
+			 Included here as an instructional tool and convenience.*/
 			function $(target)
 			{
-				return document.getElementById(target);
+				
+				
+				if(target.charAt(0) == "#")
+				{
+					var id = target.slice(1,target.length);
+					return document.getElementById(id);
+				}
+				return null;
 			}
 			
 			HTMLElement.prototype.attr = function(attr, value)
@@ -184,69 +196,69 @@
 				if(!mil)
 				{
 					h=h>12?h-12:h;
-					$("h12").css("color","rgba("+ rgb + ",1)");
-					$("h24").attr("style", " ");
+					$("#h12").css("color","rgba("+ rgb + ",1)");
+					$("#h24").attr("style", " ");
 				}
 				else
 				{
-					$("h24").css("color","rgba("+ rgb + ",1)");
-					$("h12").attr("style", " ");
+					$("#h24").css("color","rgba("+ rgb + ",1)");
+					$("#h12").attr("style", " ");
 				}	
 				s=s<10?"0"+s:s;
 				m=m<10?"0"+m:m;
 				
-				var height = $("hours").clientHeight;
+				var height = $("#hours").clientHeight;
 				var hStr = height - 5 + "px"
 								
-				$("hours").innerHTML= h+":";
-				$("hours").style.fontSize = hStr;
-				$("minutes").innerHTML= m+":";
-				$("minutes").css("font-size",hStr);
-				$("seconds").innerHTML= s;
-				$("seconds").css("font-size",hStr);
+				$("#hours").innerHTML= h+":";
+				$("#hours").style.fontSize = hStr;
+				$("#minutes").innerHTML= m+":";
+				$("#minutes").css("font-size",hStr);
+				$("#seconds").innerHTML= s;
+				$("#seconds").css("font-size",hStr);
 				
 				
 				
 				if(am)
 				{
-					$("pm").setAttribute("class","empty");
-					$("am").setAttribute("class","filled");
-					$("am").css("color","rgba("+ rgb + ",1)");
+					$("#pm").setAttribute("class","empty");
+					$("#am").setAttribute("class","filled");
+					$("#am").css("color","rgba("+ rgb + ",1)");
 				}
 				else
 				{
-					$("pm").setAttribute("class","filled");
-					$("am").setAttribute("class","empty");
-					$("pm").css("color","rgba("+ rgb + ",1)");
+					$("#pm").setAttribute("class","filled");
+					$("#am").setAttribute("class","empty");
+					$("#pm").css("color","rgba("+ rgb + ",1)");
 				}
 				
 				
 				
 				document.body.setAttribute("style","background-color:rgba("+ rgb + ",1)");
-				var height = $("am").clientHeight;
+				var height = $("#am").clientHeight;
 				var hStr = height - 5 + "px"
 				
 				
-				$("am").css("font-size",hStr);
+				$("#am").css("font-size",hStr);
 				
-				$("pm").css("font-size",hStr);
+				$("#pm").css("font-size",hStr);
 			}
 			
 			var t = window.setInterval(updateClock,1000);
 			
-			$("h12").onclick=function(){
+			$("#h12").onclick=function(){
 				mil = false;
-				$("h12").attr("class","filled");
-				$("h24").attr("class","empty");
-				$("h24").attr("style"," ");
+				$("#h12").attr("class","filled");
+				$("#h24").attr("class","empty");
+				$("#h24").attr("style"," ");
 				updateClock()
 			};
 			
-			$("h24").onclick=function(){
+			$("#h24").onclick=function(){
 				mil = true;
-				$("h24").attr("class","filled");
-				$("h12").attr("class","empty");
-				$("h12").attr("style"," ");
+				$("#h24").attr("class","filled");
+				$("#h12").attr("class","empty");
+				$("#h12").attr("style"," ");
 				updateClock();
 			};
 			
