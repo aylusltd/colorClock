@@ -1,0 +1,50 @@
+#analog
+{
+	width: 50%;
+	height: 50%;
+	top: 25%;
+	left:25%;
+	
+	position:absolute;
+	
+}
+
+#analog>svg
+{
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	left:0%;
+	
+	position:absolute;
+	
+}
+
+#analogFace{
+	stroke-width:.25;	
+}
+
+.majorHash
+{
+	stroke-width : 0.2;
+}
+
+.minorHash
+{
+	stroke-width : 0.1;
+	
+}
+
+body
+{
+	background:#FFFFFF;
+}
+
+
+#analogColorToggle
+{
+	z-index:500;
+	position:absolute;
+	bottom:5%;
+	right:2%;
+}
